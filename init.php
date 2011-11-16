@@ -23,6 +23,7 @@
   /* parse and load config.yml */
 
   $config = Spyc::YAMLLoad(DIR_ROOT.'config.yml');
+  $routes = Spyc::YAMLLoad(DIR_ROOT.'routes.yml');
   $config["relative_path"] = removeFromStart($_SERVER['REQUEST_URI'],$config["www"]["root_path"]);
 
     /* Smarty templates */

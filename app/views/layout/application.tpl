@@ -12,17 +12,14 @@
 
 <body>
 
-  <div id="container">
+  <div class="container">
     <header>
     <h2>Relative path: {$relative_path}</h2>
     </header>
     <div id="main" role="main">
       {$yield}
     </div>
-    <footer>
-
-    </footer>
-  </div> <!--! end of #container -->
+  </div> <!--! end of .container -->
 
 
 

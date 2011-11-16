@@ -16,4 +16,13 @@ function removeFromStart($str,$prefix){
   return $str;
 }
 
+function matchRoute($path,$routes){
+  foreach (array_keys($routes) as $route){
+    if ($route == $path || $route."/" == $path){
+      return explode("#",$routes[$route]);
+    }
+  }
+  return false;
+}
+
  
