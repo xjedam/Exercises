@@ -2,9 +2,9 @@
 class DBManager {
 	protected $database;
 	
-	public function __construct() {
+	public function __construct($adapter,$host,$user,$password,$database) {
 		try {
-			$this->database = new PDO("mysql:host=localhost;dbname=exercises", "root", "");
+			$this->database = new PDO("$adapter:host=$host;dbname=$database", "$user", "$password");
 		}
 		catch(PDOException $e) {
 			echo $e->getMessage()."<br />" ;
@@ -22,6 +22,8 @@ class DBManager {
 	
 	public function query_to_array($query_result){
 		$data=array();
+        if (!$query_result)
+            return $data;
 		foreach ($query_result as $row) {
 			foreach ($row as $key => $value)
 				if (is_integer($key))
