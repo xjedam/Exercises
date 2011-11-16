@@ -9,4 +9,11 @@ function loadControllers($path){
     return $list;
 }
 
+function removeFromStart($str,$prefix){
+  if (substr($str, 0, strlen($prefix) ) == $prefix) {
+    $str = substr($str, strlen($prefix), strlen($str) );
+  }
+  return $str;
+}
+
  

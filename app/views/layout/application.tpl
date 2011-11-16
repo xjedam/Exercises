@@ -7,17 +7,17 @@
   <title></title>
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <link rel="stylesheet" href="{$root}/assets/css/bootstrap.min.css">
 </head>
 
 <body>
 
   <div id="container">
     <header>
-
+    <h2>Relative path: {$relative_path}</h2>
     </header>
     <div id="main" role="main">
-      {block name=body}{/block}
+      {$yield}
     </div>
     <footer>
 

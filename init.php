@@ -2,10 +2,14 @@
 
 	define('DIR_ROOT', dirname(__FILE__) . "/");
 	define('DIR_CLASS', DIR_ROOT . 'class/');
-    require_once "functions.php";
+
+
+  require_once DIR_ROOT."functions.php";
 	require_once(DIR_CLASS . "dbmanager.php");
-    require_once "lib/spyc.php"; // YAML
-    require('lib/smarty/Smarty.class.php'); // Templates
+  require_once DIR_ROOT."lib/spyc.php"; // YAML
+  require(DIR_ROOT.'lib/smarty/Smarty.class.php'); // Templates
+
+
 
 	function __autoload($className)
 	{
@@ -13,12 +17,13 @@
 			require_once DIR_CLASS . strtolower($className) . '.php';
 	}
 
-    /* load controllers */
-    $controllers = loadControllers("app/controllers/*.php");
+  /* load controllers */
+  $controllers = loadControllers(DIR_ROOT."app/controllers/*.php");
 
-    /* parse and load config.yml */
+  /* parse and load config.yml */
 
-    $config = Spyc::YAMLLoad('config.yml');
+  $config = Spyc::YAMLLoad(DIR_ROOT.'config.yml');
+  $config["relative_path"] = removeFromStart($_SERVER['REQUEST_URI'],$config["www"]["root_path"]);
 
     /* Smarty templates */
   $smarty = new Smarty;

@@ -4,6 +4,10 @@ class Application {
 
   public static function render_layout($view){
     global $smarty;
+    global $config;
+    $smarty->assign("root",$config["www"]["root_path"]);
+    $smarty->assign("relative_path",$config["relative_path"]);
+    $smarty->assign("yield",$smarty->fetch(DIR_ROOT.'app/views/'.$view.".tpl"));
     $smarty->display(DIR_ROOT.'app/views/layout/application.tpl');
   }
 

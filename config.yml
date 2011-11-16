@@ -1,3 +1,5 @@
+www:
+  root_path: /exercises
 db:
   adapter: mysql
   host: localhost
