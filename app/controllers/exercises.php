@@ -15,6 +15,10 @@ class Exercises extends Application {
     // normalnie jest dostep do $_POST[];
     $z_form = $_POST["content"];
 
+    $fields = $_POST;
+    $fields['create_date'] = date("Y-m-d H:i:s");
+
+    self::$db->array_insert("exercise", $fields);
     return array("z_form" => $z_form);
   }
 }
