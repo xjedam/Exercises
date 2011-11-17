@@ -8,15 +8,33 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="stylesheet" href="{$root}/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{$root}/assets/css/style.css">
 </head>
 
 <body>
-
-  <div class="container">
-    <header>
-    <h2>Relative path: {$relative_path}</h2>
-    </header>
-    <div id="main" role="main">
+    <div class="topbar">
+      <div class="topbar-inner masthead">
+        <div class="container-fluid">
+          <a class="brand" href="{$root}">Zadania</a>
+          <ul class="nav">
+            <li>{link_to n="Zadania" l="/zadania" nav=1}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <div class="container-fluid">
+      <div class="sidebar">
+        <div class="well">
+          <h5>Ostatnie zadania</h5>
+          <ul>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+      </div>
+    <div class="content">
       {$yield}
     </div>
   </div> <!--! end of .container -->

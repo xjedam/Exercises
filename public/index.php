@@ -1,7 +1,6 @@
 <?php
   require_once("../init.php");
-  print_r($routes);
-  echo "<br/>";
+  require DIR_ROOT."helpers.php";
   $target =  matchRoute($config["relative_path"],$routes);
 
   if ($target != false)

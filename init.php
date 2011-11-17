@@ -3,11 +3,10 @@
 	define('DIR_ROOT', dirname(__FILE__) . "/");
 	define('DIR_CLASS', DIR_ROOT . 'class/');
 
-
-  require_once DIR_ROOT."functions.php";
-	require_once(DIR_CLASS . "dbmanager.php");
-  require_once DIR_ROOT."lib/spyc.php"; // YAML
   require(DIR_ROOT.'lib/smarty/Smarty.class.php'); // Templates
+  require DIR_ROOT."functions.php";
+	require(DIR_CLASS . "dbmanager.php");
+  require DIR_ROOT."lib/spyc.php"; // YAML
 
 
 
@@ -24,8 +23,8 @@
 
   $config = Spyc::YAMLLoad(DIR_ROOT.'config.yml');
   $routes = Spyc::YAMLLoad(DIR_ROOT.'routes.yml');
-  $config["relative_path"] = removeFromStart($_SERVER['REQUEST_URI'],$config["www"]["root_path"]);
-
+  define(RELATIVE_PATH, removeFromStart($_SERVER['REQUEST_URI'],$config["www"]["root_path"]));
+  $config["relative_path"] = RELATIVE_PATH;
     /* Smarty templates */
   $smarty = new Smarty;
   $smarty->debugging = true;
@@ -36,7 +35,7 @@
   $smarty->setCacheDir(DIR_ROOT.'tmp/smarty/cache');
   $smarty->setConfigDir(DIR_ROOT.'tmp/smarty/configs');
 
-  session_start();
 
+  session_start();
 	$db = new DBManager($config["db"]["adapter"],$config["db"]["host"],$config["db"]["user"],$config["db"]["password"],$config["db"]["database"]);
 ?>

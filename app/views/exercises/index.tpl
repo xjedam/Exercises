@@ -1,1 +1,1 @@
-Strona główna zadań!
+Podstrona z zadaniami.

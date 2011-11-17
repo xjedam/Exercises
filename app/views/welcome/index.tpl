@@ -1,0 +1,1 @@
+Cośtam na stronie głównej głównej.
