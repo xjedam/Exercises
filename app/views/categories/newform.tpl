@@ -1,5 +1,5 @@
 <h1>Utwórz nową kategorię</h1>
-<form action="{$root}/zadania/utworz" method="post">
+<form action="{$root}/kategorie/utworz" method="post">
         <fieldset>
           <div class="clearfix">
             <label for="name">Nazwa</label>
