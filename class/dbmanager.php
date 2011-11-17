@@ -65,9 +65,24 @@ class DBManager {
 	
 	public function string_insert($table, $fields, $values){
 		$q = "INSERT INTO ".($table)."(".$fields.") VALUES(".$this->u8d($values).")";		
-        $res = $this->database->query($q);
+    $res = $this->database->query($q);
 		return $res;
 	}
+
+  public function array_insert($table, $field_array){
+    $field_string = "";
+    $values = "";
+    foreach ($field_array as $k => $v){
+      $field_string.="`$k`,";
+      $values.="'$v',";
+    }
+    $values = substr($values, 0, strlen($values)-1);
+    $field_string = substr($field_string, 0, strlen($field_string)-1);
+    $q = "INSERT INTO ".($table)."(".$field_string.") VALUES(".$this->u8d($values).")";
+    echo $q;
+    $res = $this->database->query($q);
+		return $res;
+  }
 	
 	public function string_update($table, $setting, $condition = null){
 		$q = "UPDATE ".$table." SET ".$this->u8d($setting);
