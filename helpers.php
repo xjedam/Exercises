@@ -5,6 +5,7 @@ function link_to($params,&$smarty){
   $root   = $smarty->getTemplateVars('root');
   $path   = $smarty->getTemplateVars('relative_path');
   $routes = $smarty->getTemplateVars('routes');
+  $active = "";
   if ($path == $params["l"])
     $active = "class='active'";
   if ($params["nav"])
