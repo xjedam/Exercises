@@ -16,6 +16,9 @@ class Categories extends Application {
 
   protected static function create(){
 
+    $fields = $_POST;
+    self::$db->array_insert("category", $fields);
+
   }
   public static function recurse_children($parent_id=0){
     $categories = self::$db->array_select(array("id","name","parent_id"),"category", "deleted != 1 and hidden != 1 AND parent_id = ".$parent_id);
