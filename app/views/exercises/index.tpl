@@ -1,1 +1,2 @@
-Podstrona z zadaniami.
+Podstrona z zadaniami.<br/>
+Zmienna z kontrolera: {$costam}
