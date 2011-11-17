@@ -2,6 +2,17 @@
 <form action="{$root}/kategorie/utworz" method="post">
         <fieldset>
           <div class="clearfix">
+            <label for="parent_id">Kategoria nadrzędna</label>
+            <div class="input">
+              <select name="parent_id" id="parent_id">
+                <option value="0">brak</option>
+                {foreach $categories as $category}
+                  <option value="{$category["id"]}">{$category["name"]}</option>
+                {/foreach}
+              </select>
+            </div>
+          </div>
+          <div class="clearfix">
             <label for="name">Nazwa</label>
             <div class="input">
               <input id="name" name="name" type="text"/>
