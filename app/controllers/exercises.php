@@ -1,9 +1,8 @@
 <?php
 
 class Exercises extends Application {
-
   protected static function index(){
-    $costam = "bla";
+    $costam = self::$db;
 
     return array("costam" => $costam);
   }

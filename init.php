@@ -38,4 +38,5 @@
 
   session_start();
 	$db = new DBManager($config["db"]["adapter"],$config["db"]["host"],$config["db"]["user"],$config["db"]["password"],$config["db"]["database"]);
+  Application::$db = $db;
 ?>

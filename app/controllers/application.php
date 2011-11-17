@@ -1,13 +1,18 @@
 <?php
 
 class Application {
+  public static $db;
 
+  public static function init($database){
+    $db = $database;
+  }
   public static function render_layout($view,$variables){
     global $smarty;
     global $config;
     global $routes;
-    foreach ($variables as $key => $value)
-      $smarty->assign($key,$value);
+    if (gettype($variables) == "array")
+      foreach ($variables as $key => $value)
+        $smarty->assign($key,$value);
 
     $smarty->assign("root",$config["www"]["root_path"]);
     $smarty->assign("routes",$routes);
