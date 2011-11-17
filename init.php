@@ -23,8 +23,7 @@
 
   $config = Spyc::YAMLLoad(DIR_ROOT.'config.yml');
   $routes = Spyc::YAMLLoad(DIR_ROOT.'routes.yml');
-  define(RELATIVE_PATH, removeFromStart($_SERVER['REQUEST_URI'],$config["www"]["root_path"]));
-  $config["relative_path"] = RELATIVE_PATH;
+  $config["relative_path"] = removeFromStart($_SERVER['REQUEST_URI'],$config["www"]["root_path"]);
     /* Smarty templates */
   $smarty = new Smarty;
   $smarty->debugging = true;
