@@ -79,7 +79,6 @@ class DBManager {
     $values = substr($values, 0, strlen($values)-1);
     $field_string = substr($field_string, 0, strlen($field_string)-1);
     $q = "INSERT INTO ".($table)."(".$field_string.") VALUES(".$this->u8d($values).")";
-    echo $q;
     $res = $this->database->query($q);
 		return $res;
   }

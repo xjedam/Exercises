@@ -25,7 +25,7 @@
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label for="description">Nazwa krótka</label>
+            <label for="description">Opis</label>
             <div class="input">
               <textarea id="description" name="description"></textarea>
             </div>

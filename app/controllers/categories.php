@@ -14,5 +14,8 @@ class Categories extends Application {
 
   protected static function create(){
 
+    $fields = $_POST;
+    self::$db->array_insert("category", $fields);
+
   }
 }
