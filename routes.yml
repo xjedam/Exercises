@@ -2,3 +2,6 @@
 "/zadania/nowe": "Exercises#newform"
 "/zadania/utworz": "Exercises#create"
 "/zadania": "Exercises#index"
+"/kategorie": "Categories#index"
+"/kategorie/nowa": "Categories#newform"
+"/kategorie/utworz": "Categories#create"

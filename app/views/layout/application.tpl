@@ -24,6 +24,13 @@
                 {link_to n="Dodaj zadanie" l="/zadania/nowe" nav=1}
               </ul>
             </li>
+            <li class="dropdown" data-dropdown="dropdown">
+              <a href="{$root}/kategorie" class="dropdown-toggle">Kategorie</a>
+              <ul class="dropdown-menu">
+                {link_to n="Lista kategorii" l="/kategorie" nav=1}
+                {link_to n="Utwórz kategorię" l="/kategorie/nowa" nav=1}
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
