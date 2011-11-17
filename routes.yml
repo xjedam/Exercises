@@ -1,2 +1,4 @@
 "/": "Welcome#index"
+"/zadania/nowe": "Exercises#newform"
+"/zadania/utworz": "Exercises#create"
 "/zadania": "Exercises#index"

@@ -1,4 +1,4 @@
-<table class="bordered-table">
+<table class="bordered-table zebra-striped">
   <thead>
     <th>Pytanie</th>
     <th>Rozwiązanie</th>

@@ -15,9 +15,15 @@
     <div class="topbar">
       <div class="topbar-inner masthead">
         <div class="container-fluid">
-          <a class="brand" href="{$root}">Zadania</a>
+          <a class="brand" href="{$root}">Strona główna</a>
           <ul class="nav">
-            <li>{link_to n="Zadania" l="/zadania" nav=1}</li>
+            <li class="dropdown" data-dropdown="dropdown">
+              <a href="{$root}/zadania" class="dropdown-toggle">Zadania</a>
+              <ul class="dropdown-menu">
+                {link_to n="Lista zadań" l="/zadania" nav=1}
+                {link_to n="Dodaj zadanie" l="/zadania/nowe" nav=1}
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -46,8 +52,8 @@
 
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-dropdown.js"></script>
 
 
 </body>

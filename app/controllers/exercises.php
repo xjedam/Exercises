@@ -6,4 +6,15 @@ class Exercises extends Application {
 
     return array("costam" => $costam);
   }
+
+  protected static function newform(){
+  
+  }
+
+  protected static function create(){
+    // normalnie jest dostep do $_POST[];
+    $z_form = $_POST["content"];
+
+    return array("z_form" => $z_form);
+  }
 }
