@@ -1,1 +1,1 @@
-Cośtam na stronie głównej głównej.
+{$exercise_table}
