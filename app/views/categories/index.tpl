@@ -1,0 +1,1 @@
+{recurse_categories children=$categories}

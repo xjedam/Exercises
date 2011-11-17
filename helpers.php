@@ -14,3 +14,32 @@ function link_to($params,&$smarty){
     return "<a href='".$root.$params['l']."'>".$params['n']."</a>";
 
 }
+
+$smarty->registerPlugin('function','recurse_categories', 'recurse_categories');
+function recurse_categories($params, &$smarty){
+
+if (is_array($params['children']) && count($params['children']) > 0) {
+   $markup = '';
+
+   $markup .= '<ul>';
+
+   foreach ($params['children'] as $element) {
+      $markup .= '<li>';
+
+      $markup .= $element['name'];
+
+      if (isset($element['children'])) {
+         $markup .= recurse_categories(array('children' => $element['children']), $smarty);
+      }
+
+       $markup .= '</li>';
+   }
+
+   $markup.= '</ul>';
+
+   return $markup;
+
+} else {
+   return '';
+}
+}
