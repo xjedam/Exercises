@@ -44,7 +44,7 @@
       {$yield}
 
       <footer>
-        2011 &copy;
+        2011 &copy; Ktośtam&Ktośtam
       </footer>
     </div>
   </div> <!--! end of .container -->
@@ -52,8 +52,8 @@
 
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-  <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-dropdown.js"></script>
+  <script src="{$root}/assets/js/jquery.min.js"></script>
+  <script src="{$root}/assets/js/bootstrap-dropdown.js"></script>
 
 
 </body>

@@ -5,7 +5,7 @@ body{
   color: white;
 }
 .topbar div>ul .active>a,.nav .active>a{background-color:#222;background-color: rgba(0, 0, 0, 0.2);}
-
+/*
 .masthead {
   background-color: #049cd9;
   background-repeat: no-repeat;
@@ -14,5 +14,11 @@ body{
   background-image: -moz-linear-gradient(#004D9F, #049cd9);
   background-image: -o-linear-gradient(top, #004D9F, #049cd9);
   background-image: -khtml-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#004D9F', endColorstr='#049cd9', GradientType=0); /* IE8 and down */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#004D9F', endColorstr='#049cd9', GradientType=0);
 }
+
+.topbar div > ul .menu-dropdown, .nav .menu-dropdown, .topbar div > ul .dropdown-menu, .nav .dropdown-menu {
+
+}
+
+*/
