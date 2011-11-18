@@ -39,6 +39,14 @@
               </select>
             </div>
           </div>
+          <div class="clearfix">
+            <label for="hidden">Kategorie</label>
+            <div class="input">
+              {foreach $categories as $category}
+                <input type="checkbox" name="category[]" value="{$category["id"]}" /> {$category["name_short"]} <br />
+              {/foreach}
+            </div>
+          </div>
         </fieldset>
         <div class="actions">
           <button type="submit" class="btn primary">Utwórz zadanie</button>

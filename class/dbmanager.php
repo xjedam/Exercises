@@ -4,14 +4,18 @@ class DBManager {
 	
 	public function __construct($adapter,$host,$user,$password,$database) {
 		try {
-			$this->database = new PDO("$adapter:host=$host;dbname=$database", "$user", "$password");
+			$this->database = new PDO("$adapter:host=$host;dbname=$database;", "$user", "$password");
 		}
 		catch(PDOException $e) {
 			echo $e->getMessage()."<br />" ;
 		}
 		
     }
-	
+
+  public function getLastInsertedId(){
+    return $this->database->lastInsertId();
+  }
+
 	public function u8e($item){
 		return utf8_encode($item);
 	}
@@ -79,6 +83,7 @@ class DBManager {
     $values = substr($values, 0, strlen($values)-1);
     $field_string = substr($field_string, 0, strlen($field_string)-1);
     $q = "INSERT INTO ".($table)."(".$field_string.") VALUES(".$this->u8d($values).")";
+    //echo $q;
     $res = $this->database->query($q);
 		return $res;
   }

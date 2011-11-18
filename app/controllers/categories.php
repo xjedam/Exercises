@@ -2,7 +2,12 @@
 
 class Categories extends Application {
   protected static function index(){
-    $categories = self::recurse_children(0);
+    //getting root categories
+    $categories = self::$db->array_select(array("id","name","parent_id"),"category", "deleted != 1 and hidden != 1 AND parent_id is NULL");
+    //recurring through children
+    foreach ($categories as $index => $category){
+      $categories[$index]["children"] = self::recurse_children($category["id"]);
+    }
 
     return array("categories" => $categories);
   }
