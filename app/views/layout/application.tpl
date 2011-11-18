@@ -40,10 +40,7 @@
         <div class="well">
           <h5>Ostatnie zadania</h5>
           <ul>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+
           </ul>
         </div>
       </div>
