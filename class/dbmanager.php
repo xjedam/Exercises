@@ -3,27 +3,18 @@ class DBManager {
 	protected $database;
 	
 	public function __construct($adapter,$host,$user,$password,$database) {
-		try {
-			$this->database = new PDO("$adapter:host=$host;dbname=$database;", "$user", "$password");
-		}
-		catch(PDOException $e) {
-			echo $e->getMessage()."<br />" ;
-		}
-		
+      try {
+        $this->database = new PDO("$adapter:host=$host;dbname=$database;", "$user", "$password", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") );
+      }
+      catch(PDOException $e) {
+        echo $e->getMessage()."<br />" ;
+      }
     }
 
   public function getLastInsertedId(){
     return $this->database->lastInsertId();
   }
 
-	public function u8e($item){
-		return utf8_encode($item);
-	}
-	
-	public function u8d($item){
-		return utf8_decode($item);
-	}
-	
 	public function query_to_array($query_result){
 		$data=array();
         if (!$query_result)
@@ -33,7 +24,7 @@ class DBManager {
 				if (is_integer($key))
 					unset($row[$key]);
 				else
-					$row[$key] = $this->u8e($value);
+					$row[$key] = $value;
             array_push($data,$row);
         }		
 		return $data;
@@ -42,7 +33,7 @@ class DBManager {
 	public function array_select($fields, $table, $condition = null){
 		$q = "SELECT ".implode(",", $fields)." FROM ".($table);
 		if($condition != null)
-			$q .= " WHERE ".$this->u8d($condition);		
+			$q .= " WHERE ".$condition;
         $res = $this->database->query($q);
 		return $this->query_to_array($res);
 	}
@@ -68,7 +59,7 @@ class DBManager {
 	}
 	
 	public function string_insert($table, $fields, $values){
-		$q = "INSERT INTO ".($table)."(".$fields.") VALUES(".$this->u8d($values).")";		
+		$q = "INSERT INTO ".($table)."(".$fields.") VALUES(".$values.")";
     $res = $this->database->query($q);
 		return $res;
 	}
@@ -82,16 +73,16 @@ class DBManager {
     }
     $values = substr($values, 0, strlen($values)-1);
     $field_string = substr($field_string, 0, strlen($field_string)-1);
-    $q = "INSERT INTO ".($table)."(".$field_string.") VALUES(".$this->u8d($values).")";
+    $q = "INSERT INTO ".($table)."(".$field_string.") VALUES(".$values.")";
     //echo $q;
     $res = $this->database->query($q);
 		return $res;
   }
 	
 	public function string_update($table, $setting, $condition = null){
-		$q = "UPDATE ".$table." SET ".$this->u8d($setting);
+		$q = "UPDATE ".$table." SET ".$setting;
 		if($condition != null)
-			$q .= " WHERE ".$this->u8d($condition);				
+			$q .= " WHERE ".$condition;
         $res = $this->database->query($q);
 		return $res;
 	}
