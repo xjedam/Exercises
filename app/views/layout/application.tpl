@@ -32,6 +32,16 @@
               </ul>
             </li>
           </ul>
+
+          <ul class="secondary-nav">
+            <li class="dropdown" data-dropdown="dropdown">
+              <a href="{$root}/uzytkownik" class="dropdown-toggle">Konto</a>
+              <ul class="dropdown-menu">
+                {link_to n="Zaloguj" l="/uzytkownik" nav=1}
+                {link_to n="Rejestracja" l="/uzytkownik/nowy" nav=1}
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

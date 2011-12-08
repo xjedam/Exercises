@@ -19,6 +19,7 @@ class Application {
     $smarty->assign("routes",$routes);
     $smarty->assign("_POST",$_POST);
     $smarty->assign("_GET",$_POST);
+    $smarty->assign("_SESSION",$_SESSION);
     $smarty->assign("relative_path",$config["relative_path"]);
     $smarty->assign("yield",$smarty->fetch(DIR_ROOT.'app/views/'.$view.".tpl"));
     $smarty->display(DIR_ROOT.'app/views/layout/application.tpl');

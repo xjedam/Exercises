@@ -92,4 +92,4 @@ INSERT INTO `group`(`id`, `name`, `description`) VALUES (1, 'administrator','Gru
 /*
 password is admin
 */
-INSERT INTO `account`( `group_id`, `name`, `surname`, `nickname`, `email`, `password`, `description`) VALUES (1,'admin','admin','admin','none','21232f297a57a5a743894a0e4a801fc3','none')
+INSERT INTO `account`( `group_id`, `name`, `surname`, `nickname`, `email`, `password`, `description`) VALUES (1,'admin','admin','admin','none','21232f297a57a5a743894a0e4a801fc3','none');

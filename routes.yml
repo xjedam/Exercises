@@ -5,3 +5,7 @@
 "/kategorie": "Categories#index"
 "/kategorie/nowa": "Categories#newform"
 "/kategorie/utworz": "Categories#create"
+"/uzytkownik": "Users#index"
+"/uzytkownik/nowy": "Users#newform"
+"/uzytkownik/utworz": "Users#create"
+"/uzytkownik/zaloguj": "Users#login"

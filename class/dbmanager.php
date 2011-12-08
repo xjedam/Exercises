@@ -30,7 +30,27 @@ class DBManager {
 		return $data;
 	}
 	
-	public function array_select($fields, $table, $conditions = null, $conditionsData = null){
+	/*public function array_select($fields, $table, $conditions = null, $conditionsData = null){
+		$q = "SELECT ".implode(",", $fields)." FROM ".($table);
+		if($conditions != null){
+			$q .= " WHERE ".$conditions;
+    }
+    //echo $q;
+    $stmt = $this->database->prepare($q);
+
+    $i = 1;
+    if($conditionsData != null){
+      foreach($conditionsData as &$v){
+        $stmt->bindParam($i, $v);
+        $i++;
+      }
+    }
+
+    $stmt->execute();
+		return $this->query_to_array($stmt);
+	}*/
+
+  public function array_select($fields, $table, $conditions = null, $conditionsData = null){
 		$q = "SELECT ".implode(",", $fields)." FROM ".($table);
 		if($conditions != null){
 			$q .= " WHERE ".$conditions;
@@ -95,7 +115,7 @@ class DBManager {
     }
 
     $stmt->execute();
-		//return $res;
+		return $stmt;
   }
 
   //unsafe
@@ -136,7 +156,7 @@ class DBManager {
     }
 
     $stmt->execute();
-    
+    return $stmt;
   }
 
   //unsafe
