@@ -29,6 +29,55 @@ CREATE TABLE IF NOT EXISTS `exercise_category` (
   PRIMARY KEY (`id_exercise`,`id_category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `account` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `group_id` bigint(20) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `surname` varchar(40) NOT NULL,
+  `nickname` varchar(40) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `description` text,
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ban_date` datetime DEFAULT NULL,
+  `ban_days` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `group_id` (`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `group` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `description` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `exercise_id` bigint(20) NOT NULL,
+  `account_id` bigint(20) NOT NULL,
+  `content` text NOT NULL,
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `hidden` tinyint(4) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `read` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `exercise_id` (`exercise_id`),
+  KEY `account_id` (`account_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+ALTER TABLE `account` ADD FOREIGN KEY ( `group_id` ) REFERENCES `exercises`.`group` (
+`id`
+) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+
+ALTER TABLE `comment` ADD FOREIGN KEY ( `exercise_id` ) REFERENCES `exercises`.`exercise` (
+`id`
+) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+
+ALTER TABLE `comment` ADD FOREIGN KEY ( `account_id` ) REFERENCES `exercises`.`account` (
+`id`
+) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+
 ALTER TABLE `exercise_category` ADD FOREIGN KEY ( `id_exercise` ) REFERENCES `exercises`.`exercise` (
 `id`
 ) ON DELETE CASCADE ON UPDATE RESTRICT ;
