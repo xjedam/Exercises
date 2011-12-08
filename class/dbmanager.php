@@ -30,12 +30,24 @@ class DBManager {
 		return $data;
 	}
 	
-	public function array_select($fields, $table, $condition = null){
+	public function array_select($fields, $table, $conditions = null, $conditionsData = null){
 		$q = "SELECT ".implode(",", $fields)." FROM ".($table);
-		if($condition != null)
-			$q .= " WHERE ".$condition;
-        $res = $this->database->query($q);
-		return $this->query_to_array($res);
+		if($conditions != null){
+			$q .= " WHERE ".$conditions;
+    }
+    //echo $q;
+    $stmt = $this->database->prepare($q);
+
+    $i = 1;
+    if($conditionsData != null){
+      foreach($conditionsData as &$v){
+        $stmt->bindParam($i, $v);
+        $i++;
+      }
+    }
+
+    $stmt->execute();
+		return $this->query_to_array($stmt);
 	}
 	
 	public function array_to_html($data, $headers = null){
@@ -96,32 +108,28 @@ class DBManager {
 	}*/
 
   /*
-   * sample usues:
-   * array_update("exercise", array("SOLUTION" => "iiiiaaaauuuu:D:D:D'`"), array("CONTENT = " => "uuu"));
-   * array_update("exercise", array("SOLUTION" => "iiiiaaaauuuu:D:D:D'`"), array("CONTENT LIKE " => "%ffff%"));
+   * sample uses:
+   * array_update("exercise", array("SOLUTION" => "iiiiaaaauuuu:D:D:D'`"), "CONTENT = ?", array("uuu"));
+   * array_update("exercise", array("SOLUTION" => "wowow ''`"), "CONTENT LIKE ? OR CONTENT LIKE ?",  array("%ffff%", "%jjj%"));
    */
-  public function array_update($table, $settingArray, $conditionArray = null){
+  public function array_update($table, $settingArray, $conditions = null, $conditionsData = null){
     $q = "UPDATE ".$table." SET ";
     foreach($settingArray as $k => $v){
       $q .= "$k = ? ,";
     }
     $q = substr($q, 0, strlen($q)-1);
-    if($conditionArray != null){
-      $q .= "WHERE ";
-      foreach($conditionArray as $k => $v){
-        $q .= "$k ? ,";
-      }
-      $q = substr($q, 0, strlen($q)-1);
+    if($conditions != null){
+      $q .= "WHERE ".$conditions;
     }
-    echo $q;
+    //echo $q;
     $stmt = $this->database->prepare($q);
     $i = 1;
     foreach($settingArray as $k => &$v){
       $stmt->bindParam($i, $v);
       $i++;
     }
-    if($conditionArray != null){
-      foreach($conditionArray as $k => &$v){
+    if($conditionsData != null){
+      foreach($conditionsData as &$v){
         $stmt->bindParam($i, $v);
         $i++;
       }
