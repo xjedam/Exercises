@@ -57,36 +57,81 @@ class DBManager {
 		$result .= "</table>";
 		return $result;
 	}
-	
-	public function string_insert($table, $fields, $values){
+
+  //unsafe
+	/*public function string_insert($table, $fields, $values){
 		$q = "INSERT INTO ".($table)."(".$fields.") VALUES(".$values.")";
     $res = $this->database->query($q);
 		return $res;
-	}
+	}*/
 
   public function array_insert($table, $field_array){
     $field_string = "";
     $values = "";
     foreach ($field_array as $k => $v){
       $field_string.="`$k`,";
-      $values.="'$v',";
+      $values.=":$k,";
     }
     $values = substr($values, 0, strlen($values)-1);
     $field_string = substr($field_string, 0, strlen($field_string)-1);
     $q = "INSERT INTO ".($table)."(".$field_string.") VALUES(".$values.")";
     //echo $q;
-    $res = $this->database->query($q);
-		return $res;
+    $stmt = $this->database->prepare($q);
+
+    foreach ($field_array as $k => &$v){
+      $stmt->bindParam($k, $v);
+    }
+
+    $stmt->execute();
+		//return $res;
   }
-	
-	public function string_update($table, $setting, $condition = null){
+
+  //unsafe
+	/*public function string_update($table, $setting, $condition = null){
 		$q = "UPDATE ".$table." SET ".$setting;
 		if($condition != null)
 			$q .= " WHERE ".$condition;
         $res = $this->database->query($q);
 		return $res;
-	}
-	
+	}*/
+
+  /*
+   * sample usues:
+   * array_update("exercise", array("SOLUTION" => "iiiiaaaauuuu:D:D:D'`"), array("CONTENT = " => "uuu"));
+   * array_update("exercise", array("SOLUTION" => "iiiiaaaauuuu:D:D:D'`"), array("CONTENT LIKE " => "%ffff%"));
+   */
+  public function array_update($table, $settingArray, $conditionArray = null){
+    $q = "UPDATE ".$table." SET ";
+    foreach($settingArray as $k => $v){
+      $q .= "$k = ? ,";
+    }
+    $q = substr($q, 0, strlen($q)-1);
+    if($conditionArray != null){
+      $q .= "WHERE ";
+      foreach($conditionArray as $k => $v){
+        $q .= "$k ? ,";
+      }
+      $q = substr($q, 0, strlen($q)-1);
+    }
+    echo $q;
+    $stmt = $this->database->prepare($q);
+    $i = 1;
+    foreach($settingArray as $k => &$v){
+      $stmt->bindParam($i, $v);
+      $i++;
+    }
+    if($conditionArray != null){
+      foreach($conditionArray as $k => &$v){
+        $stmt->bindParam($i, $v);
+        $i++;
+      }
+    }
+
+    $stmt->execute();
+    
+  }
+
+  //unsafe
 	public function run_query($q){
 		$res = $this->database->query($q);
 		return $res;
