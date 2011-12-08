@@ -85,3 +85,11 @@ ALTER TABLE `exercise_category` ADD FOREIGN KEY ( `id_exercise` ) REFERENCES `ex
 ALTER TABLE `exercise_category` ADD FOREIGN KEY ( `id_category` ) REFERENCES `exercises`.`category` (
 `id`
 ) ON DELETE CASCADE ON UPDATE RESTRICT ;
+
+
+INSERT INTO `group`(`id`, `name`, `description`) VALUES (1, 'administrator','Grupa administratorów portalu');
+
+/*
+password is admin
+*/
+INSERT INTO `account`( `group_id`, `name`, `surname`, `nickname`, `email`, `password`, `description`) VALUES (1,'admin','admin','admin','none','21232f297a57a5a743894a0e4a801fc3','none')
