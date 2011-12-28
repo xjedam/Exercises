@@ -1,13 +1,15 @@
 ﻿CREATE TABLE IF NOT EXISTS `exercise` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `content` text CHARACTER SET utf8 NOT NULL,
-  `solution` text CHARACTER SET utf8,
+  `content` text NOT NULL,
+  `solution` text,
   `create_date` datetime NOT NULL,
   `last_modification` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `difficulty` int(11) NOT NULL,
   `deleted` tinyint(4) NOT NULL DEFAULT '0',
   `hidden` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `account_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `account_id` (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `category` (
@@ -85,6 +87,10 @@ ALTER TABLE `exercise_category` ADD FOREIGN KEY ( `id_exercise` ) REFERENCES `ex
 ALTER TABLE `exercise_category` ADD FOREIGN KEY ( `id_category` ) REFERENCES `exercises`.`category` (
 `id`
 ) ON DELETE CASCADE ON UPDATE RESTRICT ;
+
+ALTER TABLE `exercise` ADD FOREIGN KEY ( `account_id` ) REFERENCES `exercises`.`account` (
+`id`
+) ON DELETE RESTRICT ON UPDATE RESTRICT ;
 
 
 INSERT INTO `group`(`id`, `name`, `description`) VALUES (1, 'administrator','Grupa administratorów portalu');
