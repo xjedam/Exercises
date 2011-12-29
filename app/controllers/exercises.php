@@ -2,7 +2,7 @@
 
 class Exercises extends Application {
   protected static function index(){
-    $resp = self::$db->array_select(array("CONTENT","SOLUTION", "CREATE_DATE", "DIFFICULTY", "HIDDEN"),"exercise", "deleted != ?", array(1));
+    $resp = self::$db->array_select(array("content","solution", "create_date", "difficulty", "hidden"),"exercise", "deleted != ?", array(1));
 
     return array("exercises" => $resp);
   }

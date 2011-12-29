@@ -17,7 +17,7 @@ class Users extends Application {
     $fields = $_POST;
 
     $resp = self::$db->array_select(array("id","name", "ban_date", "ban_days"),"account", "nickname = ? and password = ?", array($fields["nickname"], md5($fields["password"])));
-    var_dump($resp);
+    //var_dump($resp);
 
     if(!empty($resp)){
       if(is_banned($resp[0]["ban_date"], $resp[0]["ban_days"])){
@@ -27,7 +27,7 @@ class Users extends Application {
       $_SESSION["userId"] = $resp[0]["id"];
     }
 
-    return array("user" => $resp[0]);
+    return array("user" => $resp);
   }
 
   protected static function is_banned($banDate, $banDays){

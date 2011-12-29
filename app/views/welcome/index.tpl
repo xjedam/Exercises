@@ -9,10 +9,10 @@
   <tbody>
     {foreach $exercises as $exercise}
       <tr>
-        <td>{$exercise["CONTENT"]}</td>
-        <td>{$exercise["SOLUTION"]}</td>
-        <td>{$exercise["DIFFICULTY"]}</td>
-        <td>{$exercise["CREATE_DATE"]}</td>
+        <td>{$exercise["content"]}</td>
+        <td>{$exercise["solution"]}</td>
+        <td>{$exercise["difficulty"]}</td>
+        <td>{$exercise["create_date"]}</td>
       </tr>
     {/foreach}
   </tbody>
