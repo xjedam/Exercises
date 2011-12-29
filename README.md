@@ -8,3 +8,7 @@
 ## Symlink do folderu `public` dla Apache:
 
     ln -s /home/uzytkownik/projekty/Exercises/public/ /var/www/exercises
+
+## Gdy routing nie działa po wykonaniu powyższych instrukcji, to zainstalowac:
+
+    sudo a2enmod rewrite
