@@ -39,6 +39,7 @@
                 {link_to n="Wyloguj" l="/uzytkownik/wyloguj" nav=1}
               {else}
                   {link_to n="Zaloguj" l="/uzytkownik" nav=1}
+                  {link_to n="Rejestracja" l="/uzytkownik/nowy" nav=1}
               {/if}
             </li>
           </ul>
