@@ -34,12 +34,12 @@
           </ul>
 
           <ul class="secondary-nav">
-            <li class="dropdown" data-dropdown="dropdown">
-              <a href="{$root}/uzytkownik" class="dropdown-toggle">Konto</a>
-              <ul class="dropdown-menu">
-                {link_to n="Zaloguj" l="/uzytkownik" nav=1}
-                {link_to n="Rejestracja" l="/uzytkownik/nowy" nav=1}
-              </ul>
+              {if isset($_SESSION["userName"])}
+                <li><a href="{$root}"><strong>{$_SESSION["userName"]}</strong></a></li>
+                {link_to n="Wyloguj" l="/uzytkownik/wyloguj" nav=1}
+              {else}
+                  {link_to n="Zaloguj" l="/uzytkownik" nav=1}
+              {/if}
             </li>
           </ul>
         </div>
@@ -55,6 +55,8 @@
         </div>
       </div>
     <div class="content">
+      {if isset($_SESSION["error"])}<div class="alert-message error"><p>{flash_message}</p></div>{/if}
+      {if isset($_SESSION["notice"])}<div class="alert-message success"><p>{flash_message}</p></div>{/if}
       {$yield}
 
       <footer>

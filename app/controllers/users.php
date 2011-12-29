@@ -13,21 +13,29 @@ class Users extends Application {
 
   }
 
+  protected static function logout(){
+      global $config;
+      unset($_SESSION["userName"]);
+      unset($_SESSION["userId"]);
+      $_SESSION["notice"] = "Wylogowano pomyślnie.";
+      return $config["www"]["root_path"];
+  }
   protected static function login(){
+      global $config;
     $fields = $_POST;
 
     $resp = self::$db->array_select(array("id","name", "ban_date", "ban_days"),"account", "nickname = ? and password = ?", array($fields["nickname"], md5($fields["password"])));
     //var_dump($resp);
 
     if(!empty($resp)){
-      if(is_banned($resp[0]["ban_date"], $resp[0]["ban_days"])){
-        echo "banned!";
-      }
       $_SESSION["userName"] = $resp[0]["name"];
       $_SESSION["userId"] = $resp[0]["id"];
+      $_SESSION["notice"] = "Zalogowano pomyślnie.";
+    } else {
+        $_SESSION["error"] = "Niepoprawny login bądź hasło!";
     }
 
-    return array("user" => $resp);
+      return $config["www"]["root_path"];
   }
 
   protected static function is_banned($banDate, $banDays){

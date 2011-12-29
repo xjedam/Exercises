@@ -28,6 +28,9 @@ class Application {
   public static function __callStatic($name, $arguments) {
     $klass = get_called_class();
     $public = call_user_func_array($klass."::".$name,$arguments);
-    Application::render_layout(strtolower($klass)."/".strtolower($name),$public);
+    if (gettype($public) == "string")
+        header("Location: $public");
+    else
+        Application::render_layout(strtolower($klass)."/".strtolower($name),$public);
   }
 }

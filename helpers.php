@@ -43,3 +43,16 @@ if (is_array($params['children']) && count($params['children']) > 0) {
    return '';
 }
 }
+
+$smarty->registerPlugin('function','flash_message', 'flash_message');
+function flash_message($params, $smarty) {
+    $msg = "";
+    if (isset($_SESSION['error'])) {
+        $msg = $_SESSION['error'];
+    } elseif (isset($_SESSION['notice'])) {
+        $msg = $_SESSION['notice'];
+    }
+    unset($_SESSION['error']);
+    unset($_SESSION['notice']);
+    return $msg;
+}
