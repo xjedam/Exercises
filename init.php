@@ -26,7 +26,7 @@
   $config["relative_path"] = removeFromStart($_SERVER['REQUEST_URI'],$config["www"]["root_path"]);
     /* Smarty templates */
   $smarty = new Smarty;
-  $smarty->debugging = true;
+  $smarty->debugging = false;
   $smarty->caching = false;
   $smarty->cache_lifetime = 120;
   $smarty->setTemplateDir(DIR_ROOT.'tmp/smarty/templates');
