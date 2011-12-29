@@ -39,8 +39,8 @@ CREATE TABLE "exercise"(
   "create_date" timestamp NOT NULL,
   "last_modification" timestamp NULL DEFAULT NULL,
   "difficulty" int NOT NULL,
-  "deleted" int NOT NULL DEFAULT '0',
-  "hidden" int NOT NULL DEFAULT '0',
+  "deleted" int NOT NULL DEFAULT 0,
+  "hidden" int NOT NULL DEFAULT 0,
   "account_id" bigint NOT NULL,
   FOREIGN KEY("account_id") REFERENCES "account"
   ("id") ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -52,8 +52,8 @@ CREATE TABLE "category"(
   "name" varchar(50) NOT NULL,
   "name_short" varchar(20) NOT NULL,
   "description" text,
-  "deleted" int NOT NULL DEFAULT '0',
-  "hidden" int NOT NULL DEFAULT '0',
+  "deleted" int NOT NULL DEFAULT 0,
+  "hidden" int NOT NULL DEFAULT 0,
   "sort_priority" varchar(100) DEFAULT NULL
 );
 
@@ -74,9 +74,9 @@ CREATE TABLE "comment"(
   "account_id" bigint NOT NULL,
   "content" text NOT NULL,
   "create_date" timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  "hidden" int NOT NULL DEFAULT '0',
-  "deleted" int NOT NULL DEFAULT '0',
-  "read" int NOT NULL DEFAULT '0',
+  "hidden" int NOT NULL DEFAULT 0,
+  "deleted" int NOT NULL DEFAULT 0,
+  "read" int NOT NULL DEFAULT 0,
   FOREIGN KEY("exercise_id") REFERENCES "exercise"
   ("id") ON DELETE RESTRICT ON UPDATE RESTRICT,
   FOREIGN KEY("account_id") REFERENCES "category"

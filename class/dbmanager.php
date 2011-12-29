@@ -101,7 +101,7 @@ class DBManager {
     $field_string = "";
     $values = "";
     foreach ($field_array as $k => $v){
-      $field_string.="`$k`,";
+      $field_string.="$k,";
       $values.=":$k,";
     }
     $values = substr($values, 0, strlen($values)-1);
