@@ -1,8 +1,15 @@
 www:
   root_path: /exercises
 db:
+#sample mysql config
   adapter: mysql
   host: localhost
   user: root
   password: root
   database: exercises
+#sample postgres config
+#  adapter: pgsql
+#  host: localhost
+#  user: postgres
+#  password: postgres
+#  database: exercises
