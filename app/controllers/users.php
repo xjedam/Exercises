@@ -31,11 +31,13 @@ class Users extends Application {
       $_SESSION["userName"] = $resp[0]["name"];
       $_SESSION["userId"] = $resp[0]["id"];
       $_SESSION["notice"] = "Zalogowano pomyślnie.";
+      return $config["www"]["root_path"];
     } else {
         $_SESSION["error"] = "Niepoprawny login bądź hasło!";
+        return $config["www"]["root_path"]."/uzytkownik";
     }
 
-      return $config["www"]["root_path"];
+
   }
 
   protected static function is_banned($banDate, $banDays){
