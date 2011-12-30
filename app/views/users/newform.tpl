@@ -15,6 +15,6 @@
     </div><!-- /clearfix -->
   </fieldset>
   <div class="actions">
-    <button type="submit" class="btn primary">Zaloguj</button>
+    <button type="submit" class="btn primary">Zarejestruj się</button>
   </div>
 </form>
