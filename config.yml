@@ -13,3 +13,6 @@ db:
 #  user: postgres
 #  password: postgres
 #  database: exercises
+#sample sqlite config
+#  adapter: sqlite
+#  database: /home/xjedam/db/exercises.sdb

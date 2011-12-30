@@ -19,11 +19,11 @@ class Exercises extends Application {
     $fields['create_date'] = date("Y-m-d H:i:s");
     $categories = $fields['category'];
     unset($fields['category']);
-    //zmienic 1 na $_SESSION["userId"] jak bedzie logowanie
-    $fields['account_id'] = 1;
-    var_dump($fields);
+
+    $fields['account_id'] = $_SESSION["userId"];
+    //var_dump($fields);
     $response = self::$db->array_insert("exercise", $fields);
-    var_dump($response);
+    //var_dump($response);
     $lastId =  self::$db->getLastInsertedId();
     foreach($categories as $category){
       self::$db->array_insert("exercise_category", array('id_exercise' => $lastId, 'id_category' => $category['id']));
