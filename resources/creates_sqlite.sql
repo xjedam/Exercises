@@ -1,5 +1,5 @@
 
-CREATE TABLE "group"(
+CREATE TABLE "groups"(
   "id" integer PRIMARY KEY ASC,
   "name" varchar(30) NOT NULL,
   "description" text
@@ -17,7 +17,7 @@ CREATE TABLE "account"(
   "create_date" datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   "ban_date" datetime DEFAULT NULL,
   "ban_days" integer DEFAULT NULL,
-  constraint fk_account_group foreign key (group_id) references "group" (id)
+  constraint fk_account_group foreign key (group_id) references "groups" (id)
 );
 
 CREATE TABLE "exercise"(
@@ -74,9 +74,9 @@ CREATE TABLE "comment"(
   constraint fk_comment_account foreign key (account_id) references "account" (id)
 );
 
-INSERT INTO "group" ("id", "name", "description") VALUES (1, 'administrator','Grupa administratorów portalu');
-INSERT INTO "group" ("id", "name", "description") VALUES (2, 'user','Użytkownicy serwisu');
-INSERT INTO "group" ("id", "name", "description") VALUES (3, 'moderator','Moderatorzy serwisu');
+INSERT INTO "groups" ("id", "name", "description") VALUES (1, 'administrator','Grupa administratorów portalu');
+INSERT INTO "groups" ("id", "name", "description") VALUES (2, 'user','Użytkownicy serwisu');
+INSERT INTO "groups" ("id", "name", "description") VALUES (3, 'moderator','Moderatorzy serwisu');
 
 /*
 password is admin
