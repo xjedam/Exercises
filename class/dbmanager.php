@@ -1,14 +1,19 @@
 ﻿<?php
 class DBManager {
-	protected $database;
-	
-	public function __construct($adapter,$host,$user,$password,$database) {
+    protected $database;
+
+    public function __construct($adapter,$host,$user,$password,$database) {
       try {
-        $this->database = new PDO("$adapter:host=$host;dbname=$database;", "$user", "$password", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") );
+        if(!strcmp($adapter, "sqlite")) {
+          $this->database = new PDO("$adapter:$database");
+        }else {
+          $this->database = new PDO("$adapter:host=$host;dbname=$database;", "$user", "$password", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") );
+        }
       }
       catch(PDOException $e) {
         echo $e->getMessage()."<br />" ;
       }
+        //$this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
   public function getLastInsertedId(){
@@ -115,6 +120,7 @@ class DBManager {
     }
 
     $stmt->execute();
+    //print_r($this->database->errorInfo());
 		return $stmt;
   }
 
