@@ -1,6 +1,7 @@
 "/": "Welcome#index"
 "/zadania/nowe": "Exercises#newform"
 "/zadania/utworz": "Exercises#create"
+"/zadania/moje": "Exercises#userslist"
 "/zadania": "Exercises#index"
 "/kategorie": "Categories#index"
 "/kategorie/nowa": "Categories#newform"

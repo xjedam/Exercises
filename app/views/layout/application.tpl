@@ -20,7 +20,10 @@
             <li class="dropdown" data-dropdown="dropdown">
               <a href="{$root}/zadania" class="dropdown-toggle">Zadania</a>
               <ul class="dropdown-menu">
-                {link_to n="Lista zadań" l="/zadania" nav=1}
+                {link_to n="Wszystkie zadania" l="/zadania" nav=1}
+                {if isset($_SESSION["userId"])}
+                  {link_to n="Moje zadania" l="/zadania/moje" nav=1}
+                {/if}
                 {link_to n="Dodaj zadanie" l="/zadania/nowe" nav=1}
               </ul>
             </li>

@@ -28,6 +28,12 @@ class Exercises extends Application {
     foreach($categories as $category){
       self::$db->array_insert("exercise_category", array('id_exercise' => $lastId, 'id_category' => $category['id']));
     }
-
   }
+  protected static function userslist(){
+    $resp = self::$db->array_select(array("content","solution", "create_date", "difficulty", "hidden"),"exercise", "deleted != ? and account_id = ?", array(1, $_SESSION["userId"]));
+
+    return array("exercises" => $resp);
+  }
+
+
 }
