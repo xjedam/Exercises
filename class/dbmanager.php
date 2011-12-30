@@ -55,8 +55,8 @@ class DBManager {
 		return $this->query_to_array($stmt);
 	}*/
 
-  public function array_select($fields, $table, $conditions = null, $conditionsData = null){
-		$q = "SELECT ".implode(",", $fields)." FROM ".($table);
+  public function array_select($fields, $table, $conditions = null, $conditionsData = null,$joins = ""){
+		$q = "SELECT ".implode(",", $fields)." FROM ".($table)." ".$joins;
 		if($conditions != null){
 			$q .= " WHERE ".$conditions;
     }

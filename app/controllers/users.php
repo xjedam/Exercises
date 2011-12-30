@@ -44,12 +44,13 @@ class Users extends Application {
       global $config;
     $fields = $_POST;
 
-    $resp = self::$db->array_select(array("id","name", "ban_date", "ban_days"),"account", "nickname = ? and password = ?", array($fields["nickname"], md5($fields["password"])));
+    $resp = self::$db->array_select(array("account.id","account.name", "ban_date", "ban_days","groups.name AS group_name"),"account", "nickname = ? and password = ?", array($fields["nickname"], md5($fields["password"])),"LEFT JOIN groups ON groups.id = account.group_id ");
     //var_dump($resp);
 
     if(!empty($resp)){
       $_SESSION["userName"] = $resp[0]["name"];
       $_SESSION["userId"] = $resp[0]["id"];
+      $_SESSION["userGroup"] = $resp[0]["group_name"];
       $_SESSION["notice"] = "Zalogowano pomyślnie.";
       return $config["www"]["root_path"];
     } else {

@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   KEY `group_id` (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `group` (
+CREATE TABLE IF NOT EXISTS `groups` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `description` text,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   KEY `account_id` (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-ALTER TABLE `account` ADD FOREIGN KEY ( `group_id` ) REFERENCES `exercises`.`group` (
+ALTER TABLE `account` ADD FOREIGN KEY ( `group_id` ) REFERENCES `exercises`.`groups` (
 `id`
 ) ON DELETE RESTRICT ON UPDATE RESTRICT ;
 
@@ -93,9 +93,9 @@ ALTER TABLE `exercise` ADD FOREIGN KEY ( `account_id` ) REFERENCES `exercises`.`
 ) ON DELETE RESTRICT ON UPDATE RESTRICT ;
 
 
-INSERT INTO `group`(`id`, `name`, `description`) VALUES (1, 'administrator','Grupa administratorów portalu');
-INSERT INTO `group`(`id`, `name`, `description`) VALUES (2, 'user','Użytkownicy serwisu');
-INSERT INTO `group`(`id`, `name`, `description`) VALUES (3, 'moderator','Moderatorzy serwisu');
+INSERT INTO `groups`(`id`, `name`, `description`) VALUES (1, 'administrator','Grupa administratorów portalu');
+INSERT INTO `groups`(`id`, `name`, `description`) VALUES (2, 'user','Użytkownicy serwisu');
+INSERT INTO `groups`(`id`, `name`, `description`) VALUES (3, 'moderator','Moderatorzy serwisu');
 
 /*
 password is admin

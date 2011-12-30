@@ -10,7 +10,7 @@ BEGIN
 END;
 $$;
 
-CREATE TABLE "group"(
+CREATE TABLE "groups"(
   "id" bigserial PRIMARY KEY,
   "name" varchar(30) NOT NULL,
   "description" text
@@ -28,7 +28,7 @@ CREATE TABLE "account"(
   "create_date" timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   "ban_date" timestamp DEFAULT NULL,
   "ban_days" bigint DEFAULT NULL,
-  FOREIGN KEY("group_id") REFERENCES "group"
+  FOREIGN KEY("group_id") REFERENCES "groups"
   ("id") ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
@@ -89,9 +89,9 @@ CREATE TRIGGER t_upd_tstp_exercise
   FOR EACH ROW
   EXECUTE PROCEDURE upd_timestamp();
 
-INSERT INTO "group" ("id", "name", "description") VALUES (1, 'administrator','Grupa administratorów portalu');
-INSERT INTO "group" ("id", "name", "description") VALUES (2, 'user','Użytkownicy serwisu');
-INSERT INTO "group" ("id", "name", "description") VALUES (3, 'moderator','Moderatorzy serwisu');
+INSERT INTO "groups" ("id", "name", "description") VALUES (1, 'administrator','Grupa administratorów portalu');
+INSERT INTO "groups" ("id", "name", "description") VALUES (2, 'user','Użytkownicy serwisu');
+INSERT INTO "groups" ("id", "name", "description") VALUES (3, 'moderator','Moderatorzy serwisu');
 
 /*
 password is admin

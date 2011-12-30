@@ -38,7 +38,7 @@
 
           <ul class="secondary-nav">
               {if isset($_SESSION["userName"])}
-                <li><a href="{$root}"><strong>{$_SESSION["userName"]}</strong></a></li>
+                <li><a href="{$root}">{$_SESSION["userName"]} ({$_SESSION["userGroup"]})</a></li>
                 {link_to n="Wyloguj" l="/uzytkownik/wyloguj" nav=1}
               {else}
                   {link_to n="Zaloguj" l="/uzytkownik" nav=1}
