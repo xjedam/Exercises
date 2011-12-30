@@ -5,7 +5,7 @@
 
   require(DIR_ROOT.'lib/smarty/Smarty.class.php'); // Templates
   require DIR_ROOT."functions.php";
-	require(DIR_CLASS . "dbmanager.php");
+  require(DIR_CLASS . "dbmanager.php");
   require DIR_ROOT."lib/spyc.php"; // YAML
 
 
