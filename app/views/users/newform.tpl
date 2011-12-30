@@ -4,7 +4,25 @@
     <div class="clearfix">
       <label for="nickname">Pseudonim</label>
       <div class="input">
-        <input id="nickname" name="nickname" type="text"/>
+        <input id="nickname" name="nickname" type="text" value="{$_GET["nickname"]}"/>
+      </div>
+    </div><!-- /clearfix -->
+    <div class="clearfix">
+      <label for="name">Imię</label>
+      <div class="input">
+        <input id="name" name="name" type="text" value="{$_GET["name"]}"/>
+      </div>
+    </div><!-- /clearfix -->
+    <div class="clearfix">
+      <label for="surname">Nazwisko</label>
+      <div class="input">
+        <input id="surname" name="surname" type="text" value="{$_GET["surname"]}"/>
+      </div>
+    </div><!-- /clearfix -->
+    <div class="clearfix">
+      <label for="email">e-mail</label>
+      <div class="input">
+        <input id="email" name="email" type="text" value="{$_GET["email"]}"/>
       </div>
     </div><!-- /clearfix -->
     <div class="clearfix">

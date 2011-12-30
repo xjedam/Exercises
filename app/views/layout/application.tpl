@@ -61,7 +61,7 @@
       {$yield}
 
       <footer>
-        2011 &copy; Ktośtam&Ktośtam
+        2011 &copy; Ryszard Madejski & Piotr Okoński
       </footer>
     </div>
   </div> <!--! end of .container -->
