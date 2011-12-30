@@ -94,6 +94,7 @@ ALTER TABLE `exercise` ADD FOREIGN KEY ( `account_id` ) REFERENCES `exercises`.`
 
 
 INSERT INTO `group`(`id`, `name`, `description`) VALUES (1, 'administrator','Grupa administratorów portalu');
+INSERT INTO `group`(`id`, `name`, `description`) VALUES (2, 'user','Użytkownicy serwisu');
 
 /*
 password is admin

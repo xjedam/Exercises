@@ -90,6 +90,7 @@ CREATE TRIGGER t_upd_tstp_exercise
   EXECUTE PROCEDURE upd_timestamp();
 
 INSERT INTO "group" ("id", "name", "description") VALUES (1, 'administrator','Grupa administratorów portalu');
+INSERT INTO "group" ("id", "name", "description") VALUES (1, 'user','Użytkownicy serwisu');
 
 /*
 password is admin
