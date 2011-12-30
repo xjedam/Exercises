@@ -18,7 +18,8 @@ function removeFromStart($str,$prefix){
 
 function matchRoute($path,$routes){
   foreach (array_keys($routes) as $route){
-    if ($route == $path || $route."/" == $path){
+    $regex = '#^' . $route . '/?(\?.+)?$#';
+    if (preg_match($regex,$path)){
       return explode("#",$routes[$route]);
     }
   }
