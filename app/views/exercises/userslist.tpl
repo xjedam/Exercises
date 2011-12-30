@@ -6,6 +6,7 @@
   <th>Trudność</th>
   <th>Data utworzenia</th>
   <th>Widoczność</th>
+  <th>Akcje</th>
   </thead>
   <tbody>
   {foreach $exercises as $exercise}
@@ -15,6 +16,12 @@
     <td>{$exercise["difficulty"]}</td>
     <td>{$exercise["create_date"]}</td>
     <td>{($exercise["hidden"] == "0") ? "Widoczne" : "Niewidoczne" }</td>
+    <td>
+      <form action="{$root}/zadania/edytuj" method="post">
+        <input type="hidden" name="id" id="id" value="{$exercise["id"]}" \>
+        <button type="submit" class="btn secondary-action">Edytuj</button>
+      </form>
+    </td>
   </tr>
   {/foreach}
   </tbody>

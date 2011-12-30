@@ -13,7 +13,7 @@ class DBManager {
       catch(PDOException $e) {
         echo $e->getMessage()."<br />" ;
       }
-        //$this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
   public function getLastInsertedId(){
@@ -148,7 +148,9 @@ class DBManager {
       $q .= "WHERE ".$conditions;
     }
     //echo $q;
+    //echo "aaaa";
     $stmt = $this->database->prepare($q);
+    //echo "bbbb";
     $i = 1;
     foreach($settingArray as $k => &$v){
       $stmt->bindParam($i, $v);
@@ -160,8 +162,10 @@ class DBManager {
         $i++;
       }
     }
-
+    //print_r($stmt);
+    //print_r($this->database->errorInfo());
     $stmt->execute();
+    print_r($this->database->errorInfo());
     return $stmt;
   }
 

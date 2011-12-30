@@ -30,9 +30,25 @@ class Exercises extends Application {
     }
   }
   protected static function userslist(){
-    $resp = self::$db->array_select(array("content","solution", "create_date", "difficulty", "hidden"),"exercise", "deleted != ? and account_id = ?", array(1, $_SESSION["userId"]));
+    $resp = self::$db->array_select(array("id","content","solution", "create_date", "difficulty", "hidden"),"exercise", "deleted != ? and account_id = ?", array(1, $_SESSION["userId"]));
 
     return array("exercises" => $resp);
+  }
+
+  protected static function edit(){
+    $resp = self::$db->array_select(array("*"),"exercise", "id = ?", array($_POST["id"]));
+
+    return array("exercise" => $resp[0]);
+  }
+
+  protected static function save(){
+    //print_r($_POST);
+    $id = $_POST["id"];
+    unset($_POST["id"]);
+    $resp = self::$db->array_update("exercise", $_POST, "id = ?", array($id));
+    //echo(" aaa");
+    //print_r($resp);
+    return array("resp" => $resp);
   }
 
 
