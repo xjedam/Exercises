@@ -8,6 +8,11 @@ class Exercises extends Application {
   }
 
   protected static function newform(){
+    global $config;
+    if (!isset($_SESSION["userId"])){
+      $_SESSION["error"] = "Musisz być zalogowany, aby dodać zadanie!";
+      return $config["www"]["root_path"]."/uzytkownik";
+    }
     $resp = self::$db->array_select(array("name_short","id"),"category", "deleted != ? and hidden != ?", array(1, 1));
 
     return array("categories" => $resp);
