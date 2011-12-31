@@ -84,7 +84,10 @@ class Exercises extends Application {
 
   protected static function show(){
     $resp = self::$db->array_select(array("*"),"exercise", "id = ?", array($_GET["id"]));
-    return array("exercise" => $resp[0]);
+    $comments = self::$db->array_select(array("comment.id", "comment.content", "comment.read", "comment.create_date", "account.name as account_name"),
+      "comment", "exercise_id = ? and comment.deleted = ? and comment.hidden = ? ORDER BY comment.create_date DESC", array($_GET["id"], 0, 0),
+      "inner join account on account.id = comment.account_id");
+    return array("exercise" => $resp[0], "comments" => $comments);
   }
 
 
