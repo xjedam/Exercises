@@ -4,6 +4,7 @@
 "/zadania/moje": "Exercises#userslist"
 "/zadania/edytuj": "Exercises#edit"
 "/zadania/zapisz": "Exercises#save"
+"/zadania/podglad": "Exercises#show"
 "/zadania": "Exercises#index"
 "/kategorie": "Categories#index"
 "/kategorie/nowa": "Categories#newform"

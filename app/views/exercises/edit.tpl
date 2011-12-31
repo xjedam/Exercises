@@ -1,5 +1,5 @@
 <h1>Edytuj zadanie</h1>
-<form action="{$root}/zadania/zapisz" method="post">
+<form action="{$root}/zadania/zapisz{($selected_categories)? "?" : "" }{http_build_query($selected_categories)}" method="post">
   <fieldset>
     <div class="clearfix">
       <label for="content">Treść</label>
@@ -42,8 +42,8 @@
     <div class="clearfix">
       <label for="hidden">Kategorie</label>
       <div class="input">
-      {foreach $categories as $category}
-        <input type="checkbox" name="category[]" value="{$category["id"]}" /> {$category["name_short"]} <br />
+      {foreach $all_categories as $category}
+        <input type="checkbox" name="category[]" value="{$category["id"]}" {(isset($selected_categories[$category["id"]])) ? "checked" : "" }/> {$category["name_short"]} <br />
       {/foreach}
       </div>
     </div>
