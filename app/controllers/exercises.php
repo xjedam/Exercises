@@ -83,7 +83,6 @@ class Exercises extends Application {
   }
 
   protected static function show(){
-    $_GET["id"];
     $resp = self::$db->array_select(array("*"),"exercise", "id = ?", array($_GET["id"]));
     return array("exercise" => $resp[0]);
   }

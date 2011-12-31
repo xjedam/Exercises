@@ -21,7 +21,7 @@
         <input type="hidden" name="id" id="id" value="{$exercise["id"]}" \>
         <button type="submit" class="btn secondary-action">Edytuj</button>
       </form>
-      <a href="{$config["www"]["root_path"]}/zadania/podglad?id={$exercise["id"]}">Pokaż</a>
+      <a href="{$root}/zadania/podglad/?id={$exercise["id"]}">Pokaż</a>
     </td>
   </tr>
   {/foreach}
