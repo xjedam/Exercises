@@ -169,6 +169,23 @@ class DBManager {
     return $stmt;
   }
 
+  public function array_delete($table, $conditions, $conditionsData){
+    $q = "DELETE FROM ".$table." WHERE ".$conditions;
+    $stmt = $this->database->prepare($q);
+    //echo "$q";
+    //print_r($conditionsData);
+    $i = 1;
+    foreach($conditionsData as &$v){
+      $stmt->bindParam($i, $v);
+      $i++;
+    }
+    //print_r($stmt);
+    //print_r($this->database->errorInfo());
+    $stmt->execute();
+    //print_r($this->database->errorInfo());
+    return $stmt;
+  }
+
   //unsafe
 	public function run_query($q){
 		$res = $this->database->query($q);
