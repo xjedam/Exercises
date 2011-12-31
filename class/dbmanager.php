@@ -13,7 +13,7 @@ class DBManager {
       catch(PDOException $e) {
         echo $e->getMessage()."<br />" ;
       }
-        $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //$this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
   public function getLastInsertedId(){
@@ -165,7 +165,7 @@ class DBManager {
     //print_r($stmt);
     //print_r($this->database->errorInfo());
     $stmt->execute();
-    print_r($this->database->errorInfo());
+    //print_r($this->database->errorInfo());
     return $stmt;
   }
 
